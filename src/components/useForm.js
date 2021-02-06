@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useForm = () => {
+const useForm = (callback, validate, onChange) => {
   const [values, setValues] = useState({
     userName: '',
     email: '',
@@ -9,7 +9,8 @@ const useForm = () => {
     dropDown: false,
   });
 
-  const [errors, setErros] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -18,12 +19,28 @@ const useForm = () => {
       [name]: value,
     });
   };
+  const handleBoxChange = () => {};
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setErrors(validate(values));
+    setIsSubmitting(true);
   };
 
-  return { handleChange, values, handleSubmit };
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      callback();
+    }
+  }, [errors]);
+
+  return {
+    handleChange,
+    handleSubmit,
+    handleBoxChange,
+    values,
+    errors,
+  };
 };
 
 export default useForm;
