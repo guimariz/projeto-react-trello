@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const useForm = (callback, validate, onChange) => {
+const useForm = (callback, validate) => {
   const [values, setValues] = useState({
     userName: '',
     email: '',
     textArea: '',
-    checkBox: false,
+    isChecked: true,
     dropDown: false,
   });
 
@@ -14,12 +14,12 @@ const useForm = (callback, validate, onChange) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
     setValues({
       ...values,
       [name]: value,
     });
   };
-  const handleBoxChange = () => {};
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,7 +37,6 @@ const useForm = (callback, validate, onChange) => {
   return {
     handleChange,
     handleSubmit,
-    handleBoxChange,
     values,
     errors,
   };

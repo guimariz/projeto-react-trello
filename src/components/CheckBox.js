@@ -1,14 +1,18 @@
 import React from 'react';
 
-export default function CheckBox({ name, id, handleBoxChange, value }) {
-  const onChange = () => {
-    handleBoxChange(value);
-  };
-
+export default function CheckBox({ name, onChange, isChecked, type }) {
   return (
     <div>
-      <input id={id} type="checkbox" className="filled-in" checked={value} />
-      <span>{name}</span>
+      <label>
+        <input
+          type={type}
+          name={name}
+          checked={isChecked}
+          onChange={onChange}
+          className="filled-in"
+        />
+        <span>{name}</span>
+      </label>
     </div>
   );
 }

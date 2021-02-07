@@ -1,23 +1,19 @@
 import React from 'react';
 
-export default function InputInfo({ label, name, value, onChange }) {
-  const handleChange = () => {
-    console.log(value);
-    onChange(value);
-  };
-
+export default function InputInfo({ label, name, value, onChange, id }) {
   return (
     <div>
       <div className="formInputs">
         <label htmlFor="email" className="formLabel">
-          {name}
+          {id}
         </label>
         <input
           value={value}
-          id={label}
+          id={name}
+          name={name}
           type="text"
           placeholder={`Digite aqui o seu ${label}`}
-          onChange={handleChange}
+          onChange={onChange}
         />
       </div>
     </div>

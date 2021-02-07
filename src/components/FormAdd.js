@@ -1,63 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CheckBox from './CheckBox';
 import Dropdown from './Dropdown';
 import InputInfo from './InputInfo';
 import TextArea from './TextArea';
 import useForm from './useForm';
 import validate from './validateInfo';
+import './FormAdd.scss';
+
+const items = [
+  {
+    id: 1,
+    value: 'Select 1',
+  },
+  {
+    id: 2,
+    value: 'Select 2',
+  },
+  {
+    id: 3,
+    value: 'Select 3',
+  },
+];
 
 export default function FormAdd(submitForm) {
-  const {
-    handleChange,
-    handleSubmit,
-    handleBoxChange,
-    values,
-    errors,
-  } = useForm(submitForm, validate);
-  console.log(values.email);
+  const { handleChange, handleSubmit, values, errors } = useForm(
+    submitForm,
+    validate
+  );
+
   return (
-    <form className="form" onSumit={handleSubmit}>
+    <form action="#" className="form" onSubmit={handleSubmit}>
       <h1>Trello Form</h1>
       <div className="dadosUsuario">
         <InputInfo
-          name="Name"
+          name="userName"
           label="nome"
+          id="Name"
           value={values.userName}
           onChange={handleChange}
         />
         {errors.userName && <p>{errors.userName}</p>}
         <InputInfo
-          name="Email"
-          label="e-mail"
+          name="email"
+          label="email"
           type="email"
+          id="E-mail"
           value={values.email}
           onChange={handleChange}
         />
         {errors.email && <p>{errors.email}</p>}
-        <TextArea />
+        {/* <TextArea /> */}
       </div>
 
       <div className="opcoesUsuario">
-        <CheckBox
-          id="checkBox1"
-          name="Opção 1"
-          value={values.checkBox}
-          onChange={handleBoxChange}
-        />
-        <CheckBox
-          id="checkBox2"
-          name="Opção 2"
-          value={values.checkBox}
-          onChange={handleBoxChange}
-        />
-        <CheckBox
-          id="checkBox2"
-          name="Opção 3"
-          value={values.checkBox}
-          onChange={handleBoxChange}
-        />
+        <div>
+          <CheckBox
+            name="Opção 1"
+            onChange={handleChange}
+            checked={values.isChecked}
+            type="checkbox"
+          />
+          <CheckBox
+            name="Opção 2"
+            onChange={handleChange}
+            checked={values.isChecked}
+            type="checkbox"
+          />
+          <CheckBox
+            name="Opção 3"
+            onChange={handleChange}
+            checked={values.isChecked}
+            type="checkbox"
+          />
+        </div>
 
-        <Dropdown value={values.dropDown} onChange={handleChange} />
+        <Dropdown title="Dropdown" items={items} />
       </div>
 
       <a className="waves-effect waves-light btn" type="submit">
