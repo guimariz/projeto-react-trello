@@ -30,10 +30,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+textarea {
+  resize: none;
+  width: 500px;
+  min-height: 150px;
+}
+
 .container {
   max-width: 1140px;
   width: 100%;
-  margin: auto;
 }
 
 @mixin styling() {
@@ -48,9 +53,59 @@ body {
 /* DROPDOWN
    ============================================ */
 
+.input {
+  margin-bottom: 15px;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  justify-content: flex-start;
+}
+
+.dataContainer {
+  width: 50%;
+  padding: 10px;
+  margin: 5px;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-row-start {
+  align-items: flex-start;
+}
+
+.checkbox-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox {
+  margin: 20px;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkboxTotal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.dropdown {
+  // min-width: 300px;
+  min-height: 170px;
+  margin-bottom: 50px;
+}
+
 .dd-wrapper {
   display: flex;
-  min-height: 38px;
+  min-height: qpx;
   flex-wrap: wrap;
 
   .dd-header {
@@ -91,7 +146,7 @@ body {
 
       button {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         background-color: white;
         font-size: 16px;
         padding: 15px 20px 15px 20px;

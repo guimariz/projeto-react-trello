@@ -10,7 +10,7 @@ export default function Form() {
   };
 
   return (
-    <div>
+    <div className="container center">
       {!isSubmitted ? <FormAdd submitForm={submitForm} /> : <FormSucess />}
     </div>
   );
