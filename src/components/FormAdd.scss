@@ -30,6 +30,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.input p {
+  font-size: 11px;
+  color: red;
+}
+
 textarea {
   resize: none;
   width: 500px;

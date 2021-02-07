@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CheckBox from './CheckBox';
 import Dropdown from './Dropdown';
 import InputInfo from './InputInfo';
@@ -24,11 +24,15 @@ const items = [
 ];
 
 export default function FormAdd({ submitForm }) {
-  const { handleChange, handleSubmit, values, errors } = useForm(
-    submitForm,
-    validate
-  );
-
+  const {
+    handleChange,
+    handleCheckboxChange,
+    handleSubmit,
+    handleDropdownChange,
+    dropdown,
+    values,
+    errors,
+  } = useForm(submitForm, validate);
   return (
     <div className="flex-wrap">
       <form className="form" onSubmit={handleSubmit} noValidate>
@@ -56,47 +60,67 @@ export default function FormAdd({ submitForm }) {
               />
               {errors.email && <p>{errors.email}</p>}
             </div>
-            <TextArea />
+            <TextArea
+              name="textArea"
+              label="textArea"
+              type="textarea"
+              id="textArea"
+              value={values.TextArea}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="dataContainer col m6">
             <div className="flex-row checkboxTotal">
               <div className="checkbox">
                 <CheckBox
-                  name="Opção 1"
-                  onChange={handleChange}
-                  checked={values.isChecked}
+                  id="0"
+                  name="checkbox1"
                   type="checkbox"
+                  value={values.checkbox1}
+                  onChange={handleCheckboxChange}
                 />
               </div>
               <div className="checkbox">
                 <CheckBox
-                  name="Opção 2"
-                  onChange={handleChange}
-                  checked={values.isChecked}
+                  id="1"
+                  name="checkbox2"
                   type="checkbox"
+                  value={values.checkbox2}
+                  onChange={handleCheckboxChange}
                 />
               </div>
               <div className="checkbox">
                 <CheckBox
-                  name="Opção 3"
-                  onChange={handleChange}
-                  checked={values.isChecked}
+                  id="2"
+                  name="checkbox3"
                   type="checkbox"
+                  value={values.checkbox3}
+                  onChange={handleCheckboxChange}
                 />
               </div>
             </div>
             <div className="dropdown">
-              <Dropdown title="Dropdown" items={items} />
+              <Dropdown
+                name="dropdown"
+                title="Dropdown"
+                items={items}
+                value={dropdown}
+                onChange={handleDropdownChange}
+              />
             </div>
             <div className="flex-wrap row">
               <Chips />
             </div>
           </div>
         </div>
-        <a className="waves-effect waves-light btn" type="submit">
+        <button
+          className="waves-effect waves-light btn"
+          type="submit"
+          onChange={handleSubmit}
+        >
           Enviar
-        </a>
+        </button>
       </form>
     </div>
   );
