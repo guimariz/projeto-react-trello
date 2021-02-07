@@ -23,7 +23,7 @@ const items = [
   },
 ];
 
-export default function FormAdd(submitForm) {
+export default function FormAdd({ submitForm }) {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
     validate
@@ -31,7 +31,7 @@ export default function FormAdd(submitForm) {
 
   return (
     <div className="flex-wrap">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit} noValidate>
         <h3>Trello Form</h3>
         <div className="flex-row col s12">
           <div className="dataContainer col m6 ">
