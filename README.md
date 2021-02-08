@@ -1,3 +1,14 @@
+# Form Trello ReactJS
+
+Projeto para receber dados a serem enviados numa requisição da API do Trello.
+
+Projeto feito com a biblioteca React
+yarn add create-react-app
+
+Estilizado com Materialize-CSS eSCSS
+yarn add materialize-css
+yarn add node-sass
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
