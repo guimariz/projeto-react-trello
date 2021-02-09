@@ -43,9 +43,6 @@ const useForm = (callback, validate) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(validate(values));
-
-    console.log(cards);
-
     setCards({
       ...cards,
       cardsFinal: {
@@ -54,18 +51,6 @@ const useForm = (callback, validate) => {
         desc: `E-mail: ${event.target[1].value}\n Descrição: ${event.target[2].value}\n Checkbox1: ${event.target[3].value}\n Checkbox2: ${event.target[4].value}\n Checkbox3: ${event.target[5].value}\n Dropdown: Opção 2\n tag: 1`,
       },
     });
-    console.log(cards.cardsFinal);
-
-    axios
-      .post(
-        `https://api.trello.com/1/cards?key=${key}&token=${token}&idList=${idList}&name=${cards.name}&desc=${cards.desc}`
-      )
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
 
     setIsSubmitting(true);
   };
@@ -81,6 +66,7 @@ const useForm = (callback, validate) => {
     handleSubmit,
     handleCheckboxChange,
     handleDropdownChange,
+    cards,
     values,
     errors,
   };
