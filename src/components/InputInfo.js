@@ -9,7 +9,6 @@ export default function InputInfo({ label, name, value, onChange, id }) {
         </label>
         <input
           value={value}
-          id={name}
           name={name}
           type="text"
           placeholder={`Digite aqui o seu ${label}`}

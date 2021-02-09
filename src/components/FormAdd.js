@@ -61,9 +61,7 @@ export default function FormAdd({ submitForm }) {
             </div>
             <TextArea
               name="textArea"
-              label="textArea"
               type="textarea"
-              id="textArea"
               value={values.TextArea}
               onChange={handleChange}
             />
@@ -73,8 +71,7 @@ export default function FormAdd({ submitForm }) {
             <div className="flex-row checkboxTotal">
               <div className="checkbox">
                 <CheckBox
-                  id="0"
-                  name="checkbox1"
+                  name="Opção 1"
                   type="checkbox"
                   value={values.checkbox1}
                   onChange={handleCheckboxChange}
@@ -82,8 +79,7 @@ export default function FormAdd({ submitForm }) {
               </div>
               <div className="checkbox">
                 <CheckBox
-                  id="1"
-                  name="checkbox2"
+                  name="Opção 2"
                   type="checkbox"
                   value={values.checkbox2}
                   onChange={handleCheckboxChange}
@@ -91,8 +87,7 @@ export default function FormAdd({ submitForm }) {
               </div>
               <div className="checkbox">
                 <CheckBox
-                  id="2"
-                  name="checkbox3"
+                  name="Opção 3"
                   type="checkbox"
                   value={values.checkbox3}
                   onChange={handleCheckboxChange}
