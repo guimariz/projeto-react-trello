@@ -18,7 +18,6 @@ const useForm = (callback, validate) => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [dropdown, setDropDown] = useState(0);
   const [cards, setCards] = useState({ id: 0, name: '', desc: '' });
 
   const handleChange = (event) => {
@@ -43,23 +42,26 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     setErrors(validate(values));
+
     console.log(cards);
+
     setCards({
-      id: 1,
-      name: values.userName,
-      desc: `E-mail: ${values.email}\n Descrição: ${values.textArea}\n Checkbox1: ${values.checkbox1}\n Checkbox2: ${values.checkbox2}\n Checkbox3: ${values.checkbox3}\n Dropdown: Opção 2\n tag: 1`,
+      ...cards,
+      cardsFinal: {
+        id: 1,
+        name: event.target[0].value,
+        desc: `E-mail: ${event.target[1].value}\n Descrição: ${event.target[2].value}\n Checkbox1: ${event.target[3].value}\n Checkbox2: ${event.target[4].value}\n Checkbox3: ${event.target[5].value}\n Dropdown: Opção 2\n tag: 1`,
+      },
     });
-    console.log(cards);
+    console.log(cards.cardsFinal);
 
     axios
       .post(
-        `https://api.trello.com/1/cards?key=${key}&token=${token}&idList=${idList}&name=${cards.name}&desc=${cards.desc}`,
-        this.state
+        `https://api.trello.com/1/cards?key=${key}&token=${token}&idList=${idList}&name=${cards.name}&desc=${cards.desc}`
       )
-      .then((response) => {
-        console.log(response);
+      .then((res) => {
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -80,7 +82,6 @@ const useForm = (callback, validate) => {
     handleCheckboxChange,
     handleDropdownChange,
     values,
-    dropdown,
     errors,
   };
 };

@@ -29,7 +29,6 @@ export default function FormAdd({ submitForm }) {
     handleCheckboxChange,
     handleSubmit,
     handleDropdownChange,
-    dropdown,
     values,
     errors,
   } = useForm(submitForm, validate);
@@ -105,7 +104,6 @@ export default function FormAdd({ submitForm }) {
                 name="dropdown"
                 title="Dropdown"
                 items={items}
-                value={dropdown}
                 onChange={handleDropdownChange}
               />
             </div>
